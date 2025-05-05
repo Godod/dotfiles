@@ -1,0 +1,4 @@
+#!/bin/env bash
+
+# Copy tmux files
+cp -aRv tmux/. ~/.tmux/
