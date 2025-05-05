@@ -2,3 +2,6 @@
 
 # Copy tmux files
 cp -aRv tmux/. ~/.tmux/
+
+# Copy nvim plugins
+cp -aRv nvim/. ~/.config/nvim/
