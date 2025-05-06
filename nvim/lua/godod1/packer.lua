@@ -3,6 +3,7 @@ vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
+  use "nvim-lua/plenary.nvim"
   use {
       'nvim-telescope/telescope.nvim', tag = '0.1.8',
       requires = { {'nvim-lua/plenary.nvim'} }
@@ -10,37 +11,32 @@ return require('packer').startup(function(use)
 
   use({
       "rebelot/kanagawa.nvim",
-      as = 'kanagawa',
-      config = function()
-        -- Default options:
-        require('kanagawa').setup({
-            compile = false,             -- enable compiling the colorscheme
-            undercurl = true,            -- enable undercurls
-            commentStyle = { italic = true },
-            functionStyle = {},
-            keywordStyle = { italic = true},
-            statementStyle = { bold = true },
-            typeStyle = {},
-            transparent = false,         -- do not set background color
-            dimInactive = false,         -- dim inactive window `:h hl-NormalNC`
-            terminalColors = true,       -- define vim.g.terminal_color_{0,17}
-            colors = {                   -- add/modify theme and palette colors
-                palette = {},
-                theme = { wave = {}, lotus = {}, dragon = {}, all = {} },
-            },
-            overrides = function(colors) -- add/modify highlights
-                return {}
-            end,
-            theme = "dragon",            -- Load "dragon" theme
-            background = {               -- map the value of 'background' option to a theme
-                dark = "wave",           -- try "dragon" !
-                light = "lotus"
-            },
-        })
-
-        -- setup must be called before loading
-        vim.cmd("colorscheme kanagawa")
-      end
   })
 
+  use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
+
+  use {
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2",
+    requires = { {"nvim-lua/plenary.nvim"}, { 'nvim-telescope/telescope.nvim' } }
+  }
+
+  use 'mbbill/undotree'
+
+  use 'folke/lazydev.nvim'
+
+  use {
+    "williamboman/mason.nvim",
+    "williamboman/mason-lspconfig.nvim",
+    "WhoIsSethDaniel/mason-tool-installer.nvim"
+    "j-hui/fidget.nvim",
+    "saghen/blink.cmp"
+  }
+
+  use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap", "nvim-neotest/nvim-nio"} }
+
+  use 'mfussenegger/nvim-lint'
+
+  use { 'mhartington/formatter.nvim' }
 end)
+
