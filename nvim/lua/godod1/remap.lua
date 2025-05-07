@@ -19,7 +19,7 @@ vim.keymap.set("n", "N", "Nzzzv")
 -- Indent files
 vim.keymap.set("n", "=ap", "ma=ap'a")
 
--- Paste previously copied word and move highlighted word to void register 
+-- Paste previously copied word and move highlighted word to void register
 vim.keymap.set("x", "<leader>p", [["_dP]])
 
 -- Copy to the system clipboard
@@ -28,6 +28,11 @@ vim.keymap.set("n", "<leader>Y", [["+Y]])
 
 -- Delete to void register
 vim.keymap.set({ "n", "v" }, "<leader>d", "\"_d")
+
+-- Format files
+vim.keymap.set("n", "<leader>f", function()
+    require("conform").format({ bufnr = 0 })
+end)
 
 -- Replace word where cursor on
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
