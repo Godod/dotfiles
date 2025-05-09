@@ -27,12 +27,15 @@ vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 
 -- Delete to void register
-vim.keymap.set({ "n", "v" }, "<leader>d", "\"_d")
+vim.keymap.set({ "n", "v" }, "<leader>dv", '"_d')
 
 -- Format files
-vim.keymap.set("n", "<leader>f", function()
-    require("conform").format({ bufnr = 0 })
+vim.keymap.set("n", "<leader>cf", function()
+	require("conform").format({ bufnr = 0 })
 end)
 
 -- Replace word where cursor on
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+
+-- Generate docstrings
+vim.keymap.set("n", "<leader>cds", ":lua require('neogen').generate()<CR>")
