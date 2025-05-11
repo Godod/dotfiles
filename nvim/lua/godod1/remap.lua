@@ -1,4 +1,6 @@
 vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
 -- In visual mode use J and K to move elements up and down
@@ -30,12 +32,12 @@ vim.keymap.set("n", "<leader>Y", [["+Y]])
 vim.keymap.set({ "n", "v" }, "<leader>dv", '"_d')
 
 -- Format files
-vim.keymap.set("n", "<leader>cf", function()
-	require("conform").format({ bufnr = 0 })
-end)
+--vim.keymap.set("n", "<leader>cf", function()
+--	require("conform").format({ bufnr = 0 })
+--end)
 
 -- Replace word where cursor on
-vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+--vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 -- Generate docstrings
 vim.keymap.set("n", "<leader>cds", ":lua require('neogen').generate()<CR>")
