@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
 # Copy tmux files
-cp -aRv tmux/. ~/.tmux/
+cp -aRv tmux/. $HOME/.tmux/
 
 # Copy nvim plugins
-cp -aRv nvim/. ~/.config/nvim/
+cp -aRv nvim/. $HOME/.config/nvim/
 
 # Copy Ghostty config
-cp -aRv ghostty/. ~/.config/ghostty/
+cp -aRv ghostty/. $HOME/.config/ghostty/

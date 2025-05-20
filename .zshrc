@@ -108,6 +108,6 @@ export GOBIN="$GOPATH/bin"
 export PATH="$PATH:$GOPATH"
 export PATH="$PATH:$GOPATH/bin"
 alias lg='lazygit'
-alias tsess="$HOME/.tmux/session"
+alias ts="$HOME/.tmux/session"
 source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
 source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
