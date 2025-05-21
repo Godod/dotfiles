@@ -8,3 +8,6 @@ cp -aRv nvim/. $HOME/.config/nvim/
 
 # Copy Ghostty config
 cp -aRv ghostty/. $HOME/.config/ghostty/
+
+# Copy ZSHRC file
+cp -v .zshrc $HOME/
