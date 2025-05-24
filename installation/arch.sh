@@ -1,10 +1,13 @@
-#!/usr/bin/env bash
+#!/usr/bin/env bash 
 
 # Base packages
-sudo pacman -S git base-devel zsh fzf tmux neovim deno lazygit
+sudo pacman -S git base-devel fish fisher fzf fd bat tmux neovim deno lazygit eza
 
-# OMZ installation
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+# OMZ installation (we're testing fish)
+# sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+# Install fish as user default shell
+chsh -s /bin/fish
 
 # TPM activation
 git submodule init

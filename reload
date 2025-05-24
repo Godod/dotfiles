@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env fish 
 
 # Copy tmux files
 cp -aRv tmux/. $HOME/.tmux/
@@ -9,5 +9,8 @@ cp -aRv nvim/. $HOME/.config/nvim/
 # Copy Ghostty config
 cp -aRv ghostty/. $HOME/.config/ghostty/
 
-# Copy ZSHRC file
-cp -v .zshrc $HOME/
+# Copy ZSHRC file (now we're testing fish)
+# cp -v shell/.zshrc $HOME/
+
+# Copy fish config file
+cp -aRv shell/config.fish $HOME/.config/fish/
