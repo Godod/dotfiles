@@ -14,9 +14,14 @@ abbr -a -g ll eza -1la
 # `lg` -> `lazygit` abbreviation
 abbr -a -g lg lazygit
 
+# `nv` -> `nvim` abbreviation
+abbr -a -g nv nvim
+
 # `cat` → `bat` abbreviation
 # Requires `brew install bat`
 if type -q bat
   abbr --add -g cat 'bat'
 end
- 
+
+# Man pages in NeoVim
+set -g MANPAGER 'nvim +Man!'
