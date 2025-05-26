@@ -9,13 +9,16 @@ set fish_greeting ""
 abbr -a -g ls eza
 
 # `ll` -> `eza -1la` abbreviation
-abbr -a -g ll eza -1la
+abbr -a -g ll eza -1las type
 
 # `lg` -> `lazygit` abbreviation
 abbr -a -g lg lazygit
 
 # `nv` -> `nvim` abbreviation
 abbr -a -g nv nvim
+
+# `ts` -> `$HOME/.tmux/sessios` abbreviation
+abbr -a -g ts $HOME/.tmux/session
 
 # `cat` → `bat` abbreviation
 # Requires `brew install bat`

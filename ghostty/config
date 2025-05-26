@@ -5,3 +5,7 @@ font-size = 11
 # Theme
 background-opacity = 0.9
 # theme = kanagawabones
+theme = catppuccin-mocha 
+
+# Custom
+mouse-hide-while-typing = true
