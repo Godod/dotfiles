@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
 
 # Create symlinks (the '/' ignores the README)
-stow */
+# Stow doesn't see .stow-local-ignore file
+stow -v --ignore arch.sh --ignore macos.sh --ignore plugins.fish */
