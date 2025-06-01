@@ -1,7 +1,9 @@
 #!/usr/bin/env fish
 
 # Add homebrew to knowledge of fish
-fish_add_path "/opt/homebrew/bin/"
+if test -e opt/homebrew/bin/
+    fish_add_path "/opt/homebrew/bin/"
+end
 
 # Install fish plugins
 fisher install IlanCosman/tide@v6 PatrickF1/fzf.fish jorgebucaran/autopair.fish gazorby/fish-abbreviation-tips 

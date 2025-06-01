@@ -1,16 +1,4 @@
-#!/usr/bin/env fish 
+#!/usr/bin/env bash
 
-# Copy tmux files
-cp -aRv tmux/. $HOME/.tmux/
-
-# Copy nvim plugins
-cp -aRv nvim/. $HOME/.config/nvim/
-
-# Copy Ghostty config
-cp -aRv ghostty/. $HOME/.config/ghostty/
-
-# Copy ZSHRC file (now we're testing fish)
-# cp -v shell/.zshrc $HOME/
-
-# Copy fish config file
-cp -aRv shell/config.fish $HOME/.config/fish/
+# Create symlinks (the '/' ignores the README)
+stow */
