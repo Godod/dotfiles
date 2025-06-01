@@ -9,7 +9,7 @@ nvim configuration comes from [ThePrimeagen repo](https://github.com/ThePrimeage
 ```bash
 git clone https://github.com/Godod/dotfiles ~/dotfiles
 ```
-2. Run script from 'installation' folder, like
+2. Run script from `installation` folder, like
 ```bash
 cd ~/dotfiles
 ./installation/arch.sh
