@@ -6,7 +6,7 @@ end
 set fish_greeting ""
 
 # `ts` -> `$HOME/.tmux/sessios` abbreviation
-abbr -a -g ts $HOME/.tmux/session
+abbr -a -g ts $HOME/.config/tmux/session
 
 if type -q eza
     # `ls` -> `eza` abbreviation
