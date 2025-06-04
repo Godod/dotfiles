@@ -5,6 +5,11 @@ end
 # Disable the fish greeting message
 set fish_greeting ""
 
+# Add brew path if brew is installed
+if path is /opt/homebrew/
+    fish_add_path /opt/homebrew/bin
+end
+
 # `ts` -> `$HOME/.tmux/sessios` abbreviation
 abbr -a -g ts $HOME/.config/tmux/session
 
