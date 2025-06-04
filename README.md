@@ -2,7 +2,7 @@
 Configuration files for different stuff
 
 ## nvim
-nvim configuration inspired [ThePrimeagen repo](https://github.com/ThePrimeagen/init.lua/tree/master) and [kickstarter](https://github.com/nvim-lua/kickstart.nvim/tree/master)
+nvim configuration inspired by [ThePrimeagen repo](https://github.com/ThePrimeagen/init.lua/tree/master) and [kickstarter](https://github.com/nvim-lua/kickstart.nvim/tree/master)
 
 ## Installation
 1. Clone this repo
