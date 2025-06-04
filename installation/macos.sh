@@ -3,7 +3,7 @@
 # Homebrew installation
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-brew install fish fisher fzf fd bat tmux neovim deno lazygit eza helix stow
+brew install fish fisher fzf fd bat tmux neovim deno lazygit eza helix stow dive
 
 # Add fish to /etc/shells, because brew doesn't do it
 echo $(which fish) | sudo tee -a /etc/shells
