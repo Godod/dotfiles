@@ -15,10 +15,10 @@ abbr -a -g ts $HOME/.config/tmux/session
 
 if type -q eza
     # `ls` -> `eza` abbreviation
-    abbr -a -g ls eza
+    abbr -a -g ls eza --icons --group-directories-first
 
     # `ll` -> `eza -1la` abbreviation
-    abbr -a -g ll eza -1las type
+    abbr -a -g ll eza -la -s size --icons --group-directories-first
 end
 
 if type -q lazygit

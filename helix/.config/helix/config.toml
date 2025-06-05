@@ -2,7 +2,7 @@ theme = "catppuccin_macchiato"
 
 [editor]
 middle-click-paste = false
-shell = ["command"]
+shell = ["fish"]
 line-number = "relative"
 preview-completion-insert = false
 bufferline = "multiple"
