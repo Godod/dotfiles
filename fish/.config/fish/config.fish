@@ -8,6 +8,23 @@ set fish_greeting ""
 # Add brew path if brew is installed
 if path is /opt/homebrew/
     fish_add_path /opt/homebrew/bin
+
+    # Add short alias to upgrade brew packages
+    abbr -a -g bubug "brew update && brew upgrade && brew upgrade --cask && brew cleanup"
+end
+
+# Add local bin to fish path
+if path is $HOME/.local/
+    fish_add_path $HOME/.local/bin
+end
+
+# Add brew completions to fish
+if test -d (brew --prefix)"/share/fish/completions"
+    set -p fish_complete_path (brew --prefix)/share/fish/completions
+end
+
+if test -d (brew --prefix)"/share/fish/vendor_completions.d"
+    set -p fish_complete_path (brew --prefix)/share/fish/vendor_completions.d
 end
 
 # `ts` -> `$HOME/.tmux/sessios` abbreviation
