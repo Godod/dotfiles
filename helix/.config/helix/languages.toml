@@ -29,3 +29,12 @@ auto-format = true
 name = "python"
 formatter = { command = "ruff", args = ["format", "-"] }
 auto-format = true
+
+[language-server.bzl]
+command = "bzl"
+args = ["lsp", "serve"]
+
+[[language]]
+name = "starlark"
+language-servers = ["bzl"]
+auto-format = true
