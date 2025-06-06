@@ -59,5 +59,13 @@ if type -q bat
     abbr --add -g cat bat
 end
 
-# Man pages in NeoVim
+# Add global alias 't' from tmux-session-wizard plugin
+if path is $HOME/.config/tmux/plugins/tmux-session-wizard/bin
+    fish_add_path $HOME/.config/tmux/plugins/tmux-session-wizard/bin
+end
+
+# Man pages in Helix
 set -g MANPAGER 'helix +Man!'
+
+# Zoxide installation
+zoxide init fish | source
