@@ -1,5 +1,11 @@
-if status is-interactive
-    # runs only when user login
+# use 'y' word  instead of 'yazi'
+function y
+    set tmp (mktemp -t "yazi-cwd.XXXXXX")
+    yazi $argv --cwd-file="$tmp"
+    if read -z cwd <"$tmp"; and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
+        builtin cd -- "$cwd"
+    end
+    rm -f -- "$tmp"
 end
 
 # Disable the fish greeting message
@@ -51,6 +57,9 @@ end
 if type -q helix
     # `hx` -> `helix` abbreviation
     abbr -a -g hx helix
+
+    # Set default editor
+    set -gx EDITOR (which helix)
 end
 
 # `cat` → `bat` abbreviation

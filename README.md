@@ -15,3 +15,9 @@ cd ~/.dotfiles
 ./installation/arch.sh
 ```
 3. Re-open your terminal and use it ;)
+
+#### To install only necessary lib, please, use following command
+
+```bash
+stow fish/yazi/nvim/etc
+```
