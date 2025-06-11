@@ -28,7 +28,19 @@ auto-format = true
 [[language]]
 name = "python"
 formatter = { command = "ruff", args = ["format", "-"] }
+language-servers = ["ruff", "pyright"]
 auto-format = true
+
+[language-server.pyright]
+command = "pyright-langserver"
+args = ["--stdio"]
+
+[language-server.pyright.config]
+reportMissingTypeStubs = false
+
+[language-server.pyright.config.python.analysis]
+typeCheckingMode = "basic"
+autoImportCompletions = false
 
 [language-server.bzl]
 command = "bzl"
