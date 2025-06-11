@@ -1,13 +1,3 @@
-# use 'y' word  instead of 'yazi'
-function y
-    set tmp (mktemp -t "yazi-cwd.XXXXXX")
-    yazi $argv --cwd-file="$tmp"
-    if read -z cwd <"$tmp"; and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
-        builtin cd -- "$cwd"
-    end
-    rm -f -- "$tmp"
-end
-
 # Disable the fish greeting message
 set fish_greeting ""
 
@@ -71,6 +61,16 @@ end
 # Add global alias 't' from tmux-session-wizard plugin
 if path is $HOME/.config/tmux/plugins/tmux-session-wizard/bin
     fish_add_path $HOME/.config/tmux/plugins/tmux-session-wizard/bin
+end
+
+# use 'y' word  instead of 'yazi'
+function y
+    set tmp (mktemp -t "yazi-cwd.XXXXXX")
+    yazi $argv --cwd-file="$tmp"
+    if read -z cwd <"$tmp"; and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
+        builtin cd -- "$cwd"
+    end
+    rm -f -- "$tmp"
 end
 
 # Man pages in Helix
