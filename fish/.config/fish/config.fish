@@ -49,7 +49,7 @@ if type -q helix
     abbr -a -g hx helix
 
     # Set default editor
-    set -gx EDITOR (which hx)
+    set -gx EDITOR (which helix)
 end
 
 # `cat` → `bat` abbreviation
