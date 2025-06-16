@@ -14,7 +14,16 @@ git clone https://github.com/Godod/dotfiles ~/.dotfiles
 cd ~/.dotfiles
 ./installation/arch.sh
 ```
-3. Re-open your terminal and use it ;)
+3. Re-open your terminal and install additional plugins:
+```bash
+cd ~/.dotfiles
+fish ./installation/plugins.fish
+```
+4. Apply your configuration:
+```bash
+./apply
+```
+5. Re-open your terminal and use it ;)
 
 #### To install only necessary lib, please, use following command
 

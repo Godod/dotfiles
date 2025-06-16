@@ -16,4 +16,4 @@ git submodule init
 git submodule update
 
 # Reload configuration
-./apply
+# ./apply
