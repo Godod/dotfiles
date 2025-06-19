@@ -74,7 +74,7 @@ function y
 end
 
 # Man pages in Helix
-set -g MANPAGER 'helix +Man!'
+set -g MANPAGER 'hx +Man!'
 
 # Zoxide installation
 zoxide init fish | source

@@ -30,9 +30,22 @@ zstyle ':omz:plugins:eza' 'icons' yes
 # Init OMZ
 source $ZSH/oh-my-zsh.sh
 
+# Custom PATHs
+if [ -d "$HOME/.local/bin" ]; then
+  export PATH=$PATH:$HOME/.local/bin
+fi
+
 # Custom aliases
-alias lg='lazygit'
+alias lg="lazygit"
 alias ts="$HOME/.tmux/session"
+alias hx="/opt/homebrew/bin/hx"
+alias y="yazi"
+alias nv="nvim"
+alias cat="bat"
+alias l="eza"
+alias ls="eza --icons --group-directories-first"
+alias ll="eza -la -s size --icons --group-directories-first"
+alias bubug="brew update && brew upgrade && brew upgrade --cask && brew cleanup"
 
 # Custom file
 if [ -f $HOME/.user_zshrc ]; then

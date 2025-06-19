@@ -5,7 +5,7 @@ Configuration files for different stuff
 nvim configuration inspired by [ThePrimeagen repo](https://github.com/ThePrimeagen/init.lua/tree/master) and [kickstarter](https://github.com/nvim-lua/kickstart.nvim/tree/master)
 
 ## Prerequisites
-1. `bash` > 5.2 [^1]
+1. `bash` >= 5.2 [^1]
 2. `Homebrew` for MacOS
 
 ## Installation
