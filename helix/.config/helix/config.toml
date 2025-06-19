@@ -1,4 +1,5 @@
-theme = "catppuccin_macchiato"
+# theme = "catppuccin_macchiato"
+theme = "gruvbox_dark_soft"
 
 [editor]
 middle-click-paste = false

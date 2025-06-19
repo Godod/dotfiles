@@ -6,7 +6,8 @@ font-size = 12
 background-opacity = 0.95
 # theme = kanagawabones
 # theme = catppuccin-mocha
-theme = "rose-pine-moon"
+# theme = "rose-pine-moon"
+theme = "gruvboxdark"
 
 # Custom
 mouse-hide-while-typing = true
