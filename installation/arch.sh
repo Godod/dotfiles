@@ -9,9 +9,14 @@ sudo pacman -S git base-devel fish fisher fzf fd bat tmux neovim deno lazygit ez
 # Install fish as user default shell
 chsh -s /bin/fish
 
-# TPM activation
-git submodule init
-git submodule update
+# Activate new shell
+fish
 
-# Reload configuration
+# Install fish plugins
+fish ./plugins.fish
+
+# Apply configuration
 ./apply
+
+# Install TPM
+git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
