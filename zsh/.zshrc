@@ -30,21 +30,12 @@ zstyle ':omz:plugins:eza' 'icons' yes
 # Init OMZ
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
-
 # Custom aliases
 alias lg='lazygit'
 alias ts="$HOME/.tmux/session"
 
-# Custom exports
-export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
-export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
-export PATH="/opt/homebrew/opt/pnpm@8/bin:$PATH"
-export GOPATH="$HOME/go"
-export GOBIN="$GOPATH/bin"
-export PATH="$PATH:$GOPATH"
-export PATH="$PATH:$GOPATH/bin"
+# Custom file
+if [ -f $HOME/.user_zshrc ]; then
+  source $HOME/.user_zshrc
+fi
 
-# Fix bug with k8s gke-gcloud-auth-plugin plugin (depends on the system)
-# source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
-# source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
