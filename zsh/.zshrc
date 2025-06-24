@@ -48,7 +48,7 @@ alias ll="eza -la -s size --icons --group-directories-first"
 alias bubug="brew update && brew upgrade && brew upgrade --cask && brew cleanup"
 
 # Custom file
-if [ -f $HOME/.user_zshrc ]; then
-  source $HOME/.user_zshrc
+if [ -f $HOME/.zshrc_custom ]; then
+  source $HOME/.zshrc_custom
 fi
 
