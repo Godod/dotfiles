@@ -9,6 +9,9 @@ preview-completion-insert = false
 bufferline = "multiple"
 end-of-line-diagnostics = "hint"
 
+[editor.soft-wrap]
+enable = true
+
 [editor.file-picker]
 hidden = false
 deduplicate-links = false
