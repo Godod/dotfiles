@@ -3,7 +3,7 @@ theme = "gruvbox_dark_soft"
 
 [editor]
 middle-click-paste = false
-shell = ["fish"]
+shell = ["fish", "-c"]
 line-number = "relative"
 preview-completion-insert = false
 bufferline = "multiple"
@@ -29,3 +29,4 @@ cursor-line = "warning"
 [keys.normal]
 # Open git blame for current line
 Cmd-b = ":echo %sh{git blame -L %{cursor_line},+1 %{buffer_name}}"
+C-y = ":sh tmux new-window -n fx '~/.config/helix/yazi-picker.sh open'"
