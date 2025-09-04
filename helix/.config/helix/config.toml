@@ -27,6 +27,14 @@ newline = "none"
 cursor-line = "warning"
 
 [keys.normal]
-# Open git blame for current line
-Cmd-b = ":echo %sh{git blame -L %{cursor_line},+1 %{buffer_name}}"
-C-y = ":sh tmux new-window -n fx '~/.config/helix/yazi-picker.sh open'"
+C-g = [":new", ":insert-output lazygit", ":buffer-close!", ":redraw"]
+
+[keys.normal.C-y]
+# Open file(s) in the current window
+y = ":sh tmux new-window -n fx '~/.config/helix/yazi-picker.sh open'"
+# Open file(s) in a vertical split
+v = ":sh tmux new-window -n fx '~/.config/helix/yazi-picker.sh vsplit'"
+# Open file(s) in a horizontal split
+h = ":sh tmux new-window -n fx '~/.config/helix/yazi-picker.sh hsplit'"
+
+
