@@ -27,14 +27,13 @@ newline = "none"
 cursor-line = "warning"
 
 [keys.normal]
-C-g = [":new", ":insert-output lazygit", ":buffer-close!", ":redraw"]
-
-[keys.normal.C-y]
-# Open file(s) in the current window
-y = ":sh tmux new-window -n fx '~/.config/helix/yazi-picker.sh open'"
-# Open file(s) in a vertical split
-v = ":sh tmux new-window -n fx '~/.config/helix/yazi-picker.sh vsplit'"
-# Open file(s) in a horizontal split
-h = ":sh tmux new-window -n fx '~/.config/helix/yazi-picker.sh hsplit'"
+C-l = [":new", ":insert-output lazygit", ":buffer-close!", ":redraw"]
+C-y = [
+  ':sh rm -f /tmp/unique-file',
+  ':insert-output yazi "%{buffer_name}" --chooser-file=/tmp/unique-file',
+  ':insert-output echo "\x1b[?1049h\x1b[?2004h" > /dev/tty',
+  ':open %sh{cat /tmp/unique-file}',
+  ':redraw',
+]
 
 
