@@ -4,7 +4,7 @@ font-size = 12
 
 # Theme
 background-opacity = 0.95
-theme = Gruvbox Dark
+theme = Nord
 
 # Custom
 mouse-hide-while-typing = true
