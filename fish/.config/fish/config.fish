@@ -49,7 +49,7 @@ if type -q helix
     abbr -a -g hx helix
 
     # Set default editor
-    set -gx EDITOR hx
+    set -gx EDITOR helix
 end
 
 # `cat` → `bat` abbreviation
@@ -78,3 +78,8 @@ set -gx MANPAGER 'hx +Man!'
 
 # Zoxide installation
 zoxide init fish | source
+
+# Added by Antigravity
+if path is $HOME/.antigravity
+    fish_add_path $HOME/.antigravity/antigravity/bin
+end

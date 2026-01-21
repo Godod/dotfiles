@@ -4,7 +4,8 @@ font-size = 12
 
 # Theme
 background-opacity = 0.95
-theme = Nord
+# theme = Nord
+theme = Hopscotch.256
 
 # Custom
 mouse-hide-while-typing = true
