@@ -1,7 +1,7 @@
 #!/usr/bin/env bash 
 
 # Base packages
-yay -S git base-devel fish fisher fzf fd bat tmux neovim deno lazygit eza helix stow zoxide yazi markdown-oxide-git bash
+yay -S git base-devel fish fisher fzf fd bat tmux neovim deno lazygit eza helix stow zoxide yazi markdown-oxide-git bash tpack-bin
 
 # OMZ installation (we're testing fish)
 # sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -18,9 +18,8 @@ fish ./installation/plugins.fish
 # Apply configuration
 ./apply
 
-# Install TPM
+# Remove previous configuration TPM
 rm -rf ~/.config/tmux/plugins/tpm
-git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
 
 # Run tmux fish configuration
 # tide configure
