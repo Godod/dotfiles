@@ -88,3 +88,7 @@ set -gx MANPAGER 'helix +Man!'
 
 # Zoxide installation
 zoxide init fish | source
+
+
+# Added by Antigravity CLI installer
+set -gx PATH "/home/godod/.local/bin" $PATH

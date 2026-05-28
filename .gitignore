@@ -1,5 +1,6 @@
 .lua*
 .DS_Store
+.antigravitycli
 
 fish/.config/fish/fish_variables
 tmux/.config/tmux/plugins

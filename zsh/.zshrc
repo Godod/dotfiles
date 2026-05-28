@@ -52,3 +52,7 @@ if [ -f $HOME/.zshrc_custom ]; then
   source $HOME/.zshrc_custom
 fi
 
+
+
+# Added by Antigravity CLI installer
+export PATH="/home/godod/.local/bin:$PATH"
