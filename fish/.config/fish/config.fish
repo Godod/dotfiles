@@ -1,5 +1,5 @@
 # Disable the fish greeting message
-set fish_greeting ""
+set fish_greeting "Code it, boy"
 
 # Add brew path if brew is installed
 if path is /opt/homebrew/
@@ -21,6 +21,21 @@ end
 # Add local bin to fish path
 if path is $HOME/.local/
     fish_add_path $HOME/.local/bin
+end
+
+# Add global alias 't' from tmux-session-wizard plugin
+if path is $HOME/.config/tmux/plugins/tmux-session-wizard/bin
+    fish_add_path $HOME/.config/tmux/plugins/tmux-session-wizard/bin
+end
+
+# Added by Antigravity
+if path is $HOME/.antigravity
+    fish_add_path $HOME/.antigravity/antigravity/bin
+end
+
+# Add Cargo bin folder to fish path
+if path is $HOME/.cargo/bin
+    fish_add_path $HOME/.cargo/bin
 end
 
 # `ts` -> `$HOME/.tmux/sessios` abbreviation
@@ -58,11 +73,6 @@ if type -q bat
     abbr --add -g cat bat
 end
 
-# Add global alias 't' from tmux-session-wizard plugin
-if path is $HOME/.config/tmux/plugins/tmux-session-wizard/bin
-    fish_add_path $HOME/.config/tmux/plugins/tmux-session-wizard/bin
-end
-
 # use 'y' word  instead of 'yazi'
 function y
     set tmp (mktemp -t "yazi-cwd.XXXXXX")
@@ -74,12 +84,7 @@ function y
 end
 
 # Man pages in Helix
-set -gx MANPAGER 'hx +Man!'
+set -gx MANPAGER 'helix +Man!'
 
 # Zoxide installation
 zoxide init fish | source
-
-# Added by Antigravity
-if path is $HOME/.antigravity
-    fish_add_path $HOME/.antigravity/antigravity/bin
-end
