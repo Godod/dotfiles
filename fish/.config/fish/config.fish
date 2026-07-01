@@ -92,3 +92,6 @@ zoxide init fish | source
 
 # Added by Antigravity CLI installer
 set -gx PATH "/home/godod/.local/bin" $PATH
+
+# Added by codebase-memory-mcp install
+fish_add_path /home/godod/.local/bin
