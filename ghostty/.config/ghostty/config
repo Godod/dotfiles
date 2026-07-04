@@ -4,8 +4,8 @@ font-size = 12
 
 # Theme
 background-opacity = 0.95
-# theme = Nord
-theme = Hopscotch.256
+theme = "tiki-love-dark"
+window-theme = ghostty
 
 # Custom
 mouse-hide-while-typing = true

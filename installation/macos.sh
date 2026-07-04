@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 printf "👉 Installing packages..."
-brew install fish fisher fzf fd bat tmux deno lazygit eza helix stow dive zoxide yazi bash tmuxpack/tpack/tpack aicommit2
+brew install fish fisher fzf fd bat tmux deno lazygit eza helix stow dive zoxide yazi bash tmuxpack/tpack/tpack aicommit2 macchina
 
 printf "👉 Setup fish as default shell..."
 # Add fish to /etc/shells, because brew doesn't do it

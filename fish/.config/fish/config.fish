@@ -70,7 +70,14 @@ end
 # `cat` → `bat` abbreviation
 # Requires `brew install bat`
 if type -q bat
-    abbr --add -g cat bat
+    abbr -a -g cat bat
+    abbr -a -g c bat
+end
+
+# `btw` -> `macchina` with arguments abbr
+# Requires `brew install macchina`
+if type -q macchina
+    abbr -a -g btw macchina --theme mezora --show host,kernel,distribution,packages,desktop-environment,memory,processor-load,shell,terminal,window-manager,battery
 end
 
 # use 'y' word  instead of 'yazi'
@@ -89,9 +96,8 @@ set -gx MANPAGER 'helix +Man!'
 # Zoxide installation
 zoxide init fish | source
 
-
 # Added by Antigravity CLI installer
-set -gx PATH "/home/godod/.local/bin" $PATH
+set -gx PATH "$HOME/.local/bin" $PATH
 
 # Added by codebase-memory-mcp install
-fish_add_path /home/godod/.local/bin
+fish_add_path $HOME/.local/bin
