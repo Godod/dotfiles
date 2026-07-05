@@ -1,4 +1,4 @@
-theme = "base16_transparent"
+theme = "monokai_pro_ristretto"
 
 [editor]
 middle-click-paste = false
