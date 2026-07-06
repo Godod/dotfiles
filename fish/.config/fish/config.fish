@@ -43,50 +43,52 @@ if path is $HOME/.cargo/bin
     fish_add_path $HOME/.cargo/bin
 end
 
-# `ts` -> `$HOME/.tmux/sessios` abbreviation
+# `ts` -> `$HOME/.tmux/sessios`
 abbr -a -g ts $HOME/.config/tmux/session
 
 if type -q eza
-    # `ls` -> `eza` abbreviation
+    # `ls` -> `eza`
     abbr -a -g ls eza --icons --group-directories-first
 
-    # `ll` -> `eza -1la` abbreviation
+    # `ll` -> `eza -1la`
     abbr -a -g ll eza -la -s size --icons --group-directories-first
 end
 
 if type -q lazygit
-    # `lg` -> `lazygit` abbreviation
+    # `lg` -> `lazygit`
     abbr -a -g lg lazygit
 end
 
 if type -q nvim
-    # `nv` -> `nvim` abbreviation
+    # `nv` -> `nvim`
     abbr -a -g nv nvim
 end
 
 if type -q helix
-    # `hx` -> `helix` abbreviation
+    # `hx` -> `helix`
     abbr -a -g hx helix
 
     # Set default editor
     set -gx EDITOR helix
 end
 
-# `cat` → `bat` abbreviation
+# `cat` → `bat`
 # Requires `brew install bat`
 if type -q bat
     abbr -a -g cat bat
     abbr -a -g c bat
 end
 
-# `btw` -> `macchina` with arguments abbr
+# `btw` -> `macchina`
 # Requires `brew install macchina`
 if type -q macchina
     abbr -a -g btw macchina --theme mezora --show host,kernel,distribution,packages,desktop-environment,memory,processor-load,shell,terminal,window-manager,battery
 end
 
-if type -q rainfrog
-    set -gx RAINFROG_CONFIG $HOME/.config/rainfrog
+# `lq` -> `lazysql`
+# Requires `brew install lazysql`
+if type -q lazysql
+    abbr -a -g lq lazysql
 end
 
 # use 'y' word  instead of 'yazi'
