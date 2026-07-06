@@ -91,6 +91,12 @@ if type -q lazysql
     abbr -a -g lq lazysql
 end
 
+# `ld` -> `lazydocker`
+# Requires `brew install lazydocker`
+if type -q lazydocker
+    abbr -a -g ld lazydocker
+end
+
 # use 'y' word  instead of 'yazi'
 function y
     set tmp (mktemp -t "yazi-cwd.XXXXXX")

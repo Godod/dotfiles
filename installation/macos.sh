@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 
 printf "👉 Installing packages..."
-brew install fish fisher fzf fd bat tmux deno lazygit eza helix stow dive zoxide yazi bash tmuxpack/tpack/tpack macchina lazysql
+# Install tap for lazydocker
+brew install jesseduffield/lazydocker/lazydocker
+brew install fish fisher fzf fd bat tmux deno lazygit eza helix stow dive zoxide yazi bash tmuxpack/tpack/tpack macchina lazysql marksman lazydocker
 
 printf "👉 Setup fish as default shell..."
 # Add fish to /etc/shells, because brew doesn't do it

@@ -2,7 +2,7 @@
 
 # Base packages
 printf "👉 Installing packages..."
-yay -S git base-devel fish fisher fzf fd bat tmux neovim deno lazygit eza helix stow zoxide yazi bash tpack-bin macchina lazysql
+yay -S git base-devel fish fisher fzf fd bat tmux neovim deno lazygit eza helix stow zoxide yazi bash tpack-bin macchina lazysql marksman lazydocker
 
 # Install fish as user default shell
 printf "👉 Setup fish as default shell..."
