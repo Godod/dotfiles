@@ -100,9 +100,3 @@ set -gx MANPAGER 'helix +Man!'
 
 # Zoxide installation
 zoxide init fish | source
-
-# Added by Antigravity CLI installer
-set -gx PATH "$HOME/.local/bin" $PATH
-
-# Added by codebase-memory-mcp install
-fish_add_path $HOME/.local/bin
