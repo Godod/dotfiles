@@ -18,6 +18,11 @@ if path is /opt/homebrew/
     end
 end
 
+# Add NPM global package libraries to work without sudo
+if path is $HOME/.local/share/npm-global/
+    fish_add_path $HOME/.local/share/npm-global/bin
+end
+
 # Add local bin to fish path
 if path is $HOME/.local/
     fish_add_path $HOME/.local/bin
