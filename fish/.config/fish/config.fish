@@ -85,6 +85,10 @@ if type -q macchina
     abbr -a -g btw macchina --theme mezora --show host,kernel,distribution,packages,desktop-environment,memory,processor-load,shell,terminal,window-manager,battery
 end
 
+if type -q rainfrog
+    set -gx RAINFROG_CONFIG $HOME/.config/rainfrog
+end
+
 # use 'y' word  instead of 'yazi'
 function y
     set tmp (mktemp -t "yazi-cwd.XXXXXX")
