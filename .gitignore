@@ -4,3 +4,5 @@
 
 fish/.config/fish/fish_variables
 tmux/.config/tmux/plugins
+lazysql/.config/lazysql/saved_queries
+lazysql/.config/lazysql/history
