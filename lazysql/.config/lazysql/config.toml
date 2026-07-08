@@ -1,6 +1,0 @@
-[application]
-DefaultPageSize = 500
-DisableSidebar = false
-SidebarOverlay = false
-JSONViewerWordWrap = false
-EnterOpensJSONViewer = false

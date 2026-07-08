@@ -3,7 +3,11 @@
 printf "👉 Installing packages..."
 # Install tap for lazydocker
 brew install jesseduffield/lazydocker/lazydocker
-brew install fish fisher fzf fd bat tmux deno lazygit eza helix stow dive zoxide yazi bash tmuxpack/tpack/tpack macchina lazysql marksman lazydocker
+# Install tap for dblab
+brew tap danvergara/tools
+# Main installation
+brew install fish fisher fzf fd bat tmux deno lazygit eza helix stow dive zoxide yazi bash tmuxpack/tpack/tpack macchina marksman lazydocker dblab
+brew install --cask dblab
 
 printf "👉 Setup fish as default shell..."
 # Add fish to /etc/shells, because brew doesn't do it
