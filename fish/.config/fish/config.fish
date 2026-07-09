@@ -46,12 +46,21 @@ end
 # `ts` -> `$HOME/.tmux/sessios`
 abbr -a -g ts $HOME/.config/tmux/session
 
-if type -q eza
-    # `ls` -> `eza`
-    abbr -a -g ls eza --icons --group-directories-first
+# We're trying nls lib instead of eza
+# if type -q eza
+#     # `ls` -> `eza`
+#     abbr -a -g ls eza --icons --group-directories-first
 
-    # `ll` -> `eza -1la`
-    abbr -a -g ll eza -la -s size --icons --group-directories-first
+#     # `ll` -> `eza -1la`
+#     abbr -a -g ll eza -la -s size --icons --group-directories-first
+# end
+
+if type -q nls
+    # `ls` -> `nls`
+    abbr -a -g ls nls -AS --group-directories-first
+
+    # `ll` -> `nls long`
+    abbr -a -g ll nls -ASgl --group-directories-first
 end
 
 if type -q lazygit
