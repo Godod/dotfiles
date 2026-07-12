@@ -96,8 +96,8 @@ end
 
 # `lq` -> `lazysql`
 # Requires `brew install lazysql`
-if type -q lazysql
-    abbr -a -g lq lazysql
+if type -q sabiql
+    abbr -a -g lq sabiql
 end
 
 # `ld` -> `lazydocker`
