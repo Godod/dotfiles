@@ -44,3 +44,14 @@ auto-format = true
 name = "rust"
 formatter = { command = "rustfmt" }
 auto-format = true
+
+[language.debugger]
+name = "lldb"
+transport = "stdio"
+command = "lldb-dap"
+
+[[language.debugger.templates]]
+name = "binary"
+request = "launch"
+completion = [ { name = "binary", completion = "filename" } ]
+args = { program = "{0}", initCommands = [ "command script import /usr/local/etc/rust_lldb_rustc_primer.py" ] }

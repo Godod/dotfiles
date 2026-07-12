@@ -75,10 +75,10 @@ end
 
 if type -q helix
     # `hx` -> `helix`
-    abbr -a -g hx helix
+    abbr -a -g hx /usr/lib64/helix/hx
 
     # Set default editor
-    set -gx EDITOR helix
+    set -gx EDITOR /usr/lib64/helix/hx
 end
 
 # `cat` → `bat`
