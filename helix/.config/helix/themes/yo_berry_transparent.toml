@@ -1,0 +1,7 @@
+inherits = "yo_berry"
+"ui.background" = {}
+constant = "#C4589C"
+
+[palette]
+p10 = "#FAF4D2"
+p11 = "#a6c7ca"

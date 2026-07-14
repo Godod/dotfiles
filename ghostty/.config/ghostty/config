@@ -6,7 +6,7 @@ font-size = 12
 
 # Theme
 background-opacity = 0.95
-theme = "tiki-love-dark"
+config-file = ?auto/theme.ghostty
 window-theme = ghostty
 
 # Custom
