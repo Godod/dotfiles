@@ -7,13 +7,34 @@ line-number = "relative"
 preview-completion-insert = false
 bufferline = "multiple"
 end-of-line-diagnostics = "hint"
+scrolloff = 5
+jump-label-alphabet = "fjdkslarueiwoqpvncmxz"
+trim-trailing-whitespace = true
+color-modes = true
+
+[editor.statusline]
+left = ["mode"]
+center = ["file-name", "file-modification-indicator"]
+right = ["diagnostics", "selections", "position", "file-indent-style", "position-percentage", "total-line-numbers", "file-type"]
+mode.normal = "NORMAL"
+mode.select = "SELECT"
+mode.insert = "INSERT"
+
+[editor.cursor-shape]
+insert = "block"
+normal = "block"
+select = "block"
 
 [editor.soft-wrap]
 enable = true
 
+[editor.indent-guides]
+render = true
+
 [editor.file-picker]
 hidden = false
 deduplicate-links = false
+git-ignore = false
 
 [editor.whitespace.render]
 space = "all"
@@ -36,4 +57,56 @@ C-y = [
   ':rla',
 ]
 C-g = ":sh echo %sh{git show --no-patch --format='%%h \\(%%an: %%ar\\): %%s' (git blame -p %{buffer_name} -L%{cursor_line},+1 | head -1 | cut -d' ' -f1)}"
+
+"e" = ["move_next_word_end", "trim_selections"]
+"b" = ["move_prev_word_start", "trim_selections"]
+"w" = "@lbe"
+"A-j" = ["extend_to_line_bounds", "delete_selection", "paste_after"]
+"A-k" = ["extend_to_line_bounds", "delete_selection", "move_line_up", "paste_before"]
+
+"{" = ["goto_prev_paragraph", "align_view_center", "trim_selections", "extend_visual_line_up"]
+"}" = ["goto_next_paragraph", "align_view_center", "trim_selections", "extend_visual_line_down"]
+"ret" = ["goto_word"]
+"tab" = "flip_selections"
+"C-u" = ["page_cursor_half_up", "align_view_center"]
+"C-k" = ["page_cursor_half_up", "align_view_center"]
+"C-d" = ["page_cursor_half_down", "align_view_center"]
+"C-j" = ["page_cursor_half_down", "align_view_center"]
+
+B = "move_prev_sub_word_start"
+E = "move_next_sub_word_end"
+W = "@lBE"
+H = "@gh"
+L = "goto_line_end"
+G = "@ge"
+V = ["extend_to_line_bounds", "select_mode"]
+
+[keys.normal."]"]
+"f" = ["goto_next_function", "flip_selections", "align_view_top"]
+"]" = "goto_next_buffer"
+
+[keys.normal."["]
+"[" = "goto_previous_buffer"
+
+[keys.select]
+"A-j" = ["extend_to_line_bounds", "delete_selection", "paste_after"]
+"A-k" = ["extend_to_line_bounds", "delete_selection", "move_line_up", "paste_before"]
+"ret" = "extend_to_word"
+"tab" = "flip_selections"
+"{" = ["goto_prev_paragraph", "extend_to_line_bounds"]
+"}" = ["goto_next_paragraph", "extend_to_line_bounds"]
+"w" = "@<A-:><A-;>lb<A-;>he"
+B = "extend_prev_sub_word_start"
+E = "extend_next_sub_word_end"
+W = "@<A-:><A-;>lB<A-;>hE"
+H = "@gh"
+L = "goto_line_end"
+G = "@ge"
+V = ["extend_to_line_bounds", "select_mode"]
+
+[keys.insert]
+"C-t" = ["indent"]
+"C-d" = ["unindent"]
+"C-c" = ["toggle_comments"]
+"C-o" = ["normal_mode", "open_below"]
 
