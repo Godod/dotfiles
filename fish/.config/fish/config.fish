@@ -1,5 +1,5 @@
 # Disable the fish greeting message
-set fish_greeting ""
+set fish_greeting
 
 # Add brew path if brew is installed
 if path is /opt/homebrew/

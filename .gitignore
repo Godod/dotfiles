@@ -3,6 +3,11 @@
 .antigravitycli
 
 fish/.config/fish/fish_variables
+fish/.config/fish/functions
+fish/.config/fish/completions
+fish/.config/fish/fish_plugins
+fish/.config/fish/fish_variables
+fish/.config/fish/conf.d
 tmux/.config/tmux/plugins
 lazysql/.config/lazysql/saved_queries
 lazysql/.config/lazysql/history
