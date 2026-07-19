@@ -8,7 +8,7 @@ brew tap danvergara/tools
 # Install tap for nls lib
 brew tap nolight132/tap
 # Main installation
-brew install fish fisher fzf fd bat tmux deno lazygit eza helix stow dive zoxide yazi bash tmuxpack/tpack/tpack macchina marksman lazydocker dblab nls riii111/sabiql/sabiql
+brew install fish fisher fzf fd bat tmux deno lazygit eza helix stow dive zoxide yazi bash tmuxpack/tpack/tpack fastfetch marksman lazydocker dblab nls riii111/sabiql/sabiql
 brew install --cask dblab
 
 printf "👉 Setup fish as default shell...\n"

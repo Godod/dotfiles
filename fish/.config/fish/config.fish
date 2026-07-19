@@ -88,10 +88,10 @@ if type -q bat
     abbr -a -g c bat
 end
 
-# `btw` -> `macchina`
-# Requires `brew install macchina`
-if type -q macchina
-    abbr -a -g btw macchina --theme custom --show host,kernel,distribution,packages,desktop-environment,memory,processor-load,shell,terminal,window-manager,battery
+# `btw` -> `fastfetch`
+# Requires `brew install fastfetch`
+if type -q fastfetch
+    abbr -a -g btw fastfetch
 end
 
 # `lq` -> `lazysql`
@@ -109,39 +109,8 @@ end
 # Man pages in Helix
 set -gx MANPAGER 'helix +Man!'
 
-# use 'y' word  instead of 'yazi'
-function y
-    set tmp (mktemp -t "yazi-cwd.XXXXXX")
-    yazi $argv --cwd-file="$tmp"
-    if read -z cwd <"$tmp"; and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
-        builtin cd -- "$cwd"
-    end
-    rm -f -- "$tmp"
-end
-
-function quotes --description 'Linus Torvalds quotes'
-    set -l quotes \
-        "Talk is cheap. Show me the code." \
-        "A computer is like air conditioning - it becomes useless when you open Windows." \
-        "All operating systems suck, but Linux just sucks less." \
-        "Standards are paper. I use paper to wipe my butt every day. Reality is what matters." \
-        "Intelligence is the ability to avoid doing work, yet getting the work done." \
-        "Software is like sex: it's better when it's free." \
-        "Nobody actually creates perfect code the first time around, except me. But there's only one of me." \
-        "Bad programmers worry about the code. Good programmers worry about data structures and their relationships." \
-        "Theory and practice sometimes clash. And when that happens, theory loses. Every single time." \
-        "I like offending people, because I think people who get offended should be offended." \
-        "Regression testing? What's that? If it compiles, it is good; if it boots up, it is perfect." \
-        "Those that can, do. Those that can't, complain."
-
-    set -l selected_quote (random choice $quotes)
-
-    set -l cyan (set_color cyan)
-    set -l normal (set_color normal)
-
-    echo -e ""$cyan"💬 \"$selected_quote\""$normal" — Linus Torvalds"
-end
-quotes
+# Include custom functions
+source $HOME/.config/fish/custom_functions.fish
 
 # Zoxide installation
 zoxide init fish | source
