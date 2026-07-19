@@ -11,3 +11,5 @@ fish/.config/fish/conf.d
 tmux/.config/tmux/plugins
 lazysql/.config/lazysql/saved_queries
 lazysql/.config/lazysql/history
+rofi/.config/rofi/colors.rasi
+waybar/.config/waybar/tokens/colors.css

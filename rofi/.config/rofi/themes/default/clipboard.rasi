@@ -1,5 +1,5 @@
-/* ~/.config/rofi/clipboard.rasi */
-@import "config.rasi"
+@import "default.rasi"
+
 inputbar {
   enabled: false;
 }
