@@ -46,6 +46,18 @@ hl.config({
     mouse_move_enables_dpms = true,
     disable_splash_rendering = true,
   },
+
+  dwindle = {
+    preserve_split = true,
+  },
+
+  master = {
+    new_status = "master",
+  },
+
+  scrolling = {
+    fullscreen_on_one_column = true,
+  },
 })
 
 
