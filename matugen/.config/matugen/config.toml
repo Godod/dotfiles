@@ -15,3 +15,6 @@ input_path = '~/.config/ghostty/auto/colors.txt'
 output_path = '~/.config/ghostty/themes/Matugen'
 post_hook = 'pkill -SIGUSR2 ghostty'
 
+[templates.helix]
+input_path = '~/.config/helix/colors.txt'
+output_path = '~/.config/helix/themes/matugen.toml'

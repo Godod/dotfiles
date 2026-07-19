@@ -1,4 +1,5 @@
-theme = "yo_berry_transparent"
+# theme = "yo_berry_transparent"
+theme = "matugen"
 
 [editor]
 middle-click-paste = false

@@ -13,3 +13,5 @@ lazysql/.config/lazysql/saved_queries
 lazysql/.config/lazysql/history
 rofi/.config/rofi/colors.rasi
 waybar/.config/waybar/tokens/colors.css
+helix/.config/helix/colors.txt
+ghostty/.config/ghostty/auto/colors.txt
