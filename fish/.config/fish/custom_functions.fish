@@ -4,7 +4,7 @@ if type -q hyprpaper
         # and select a Rofi theme using fzf.
         # It saves WALLPAPER_PATH and ROFI_THEME to the systemd environment.
 
-        set -l DIR "$HOME/Pictures/Wallhaven"
+        set -l DIR "$HOME/Pictures/Wallpapers"
         set -l ROFI_DIR "$HOME/.config/rofi/themes"
 
         # Check if the wallpaper directory has files

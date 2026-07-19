@@ -7,7 +7,7 @@ A custom interactive shell configuration equipped with aliases, abbreviations, a
 ### `wallpaper`
 
 A dynamic selector script combining `yazi`, `fzf`, `hyprpaper`, and `matugen` to change themes on the fly.
-1. Launches **Yazi** in directory chooser mode to pick an image from `~/Pictures/Wallhaven`.
+1. Launches **Yazi** in directory chooser mode to pick an image from `~/Pictures/Wallpapers`.
 2. Launches **FZF** to select a Rofi theme from `~/.config/rofi/themes/`.
 3. Propagates variables (`WALLPAPER_PATH`, `ROFI_THEME`) to the user systemd environment.
 4. Reloads **Hyprpaper** with the new wallpaper.
