@@ -48,10 +48,11 @@ waybar/
 | [pipewire](https://wiki.archlinux.org/title/PipeWire) / [pulseaudio](https://wiki.archlinux.org/title/PulseAudio) | Audio |
 
 ### Installation
+
+This configuration is managed using GNU Stow in these dotfiles. Run the following from the root of the dotfiles directory:
+
 ```bash
-git clone https://github.com/haikal-hakim/athena.git
-cd athena
-cp -r .config/waybar ~/.config/waybar
+stow waybar
 ```
 ---
 
