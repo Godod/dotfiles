@@ -18,3 +18,7 @@ post_hook = 'pkill -SIGUSR2 ghostty'
 [templates.helix]
 input_path = '~/.config/helix/colors.txt'
 output_path = '~/.config/helix/themes/matugen.toml'
+
+[templates.yazi]
+input_path = '~/.config/yazi/config.toml'
+output_path = '~/.config/yazi/theme.toml'
