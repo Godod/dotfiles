@@ -26,6 +26,11 @@ hl.bind(mainMod .. " + R", function ()
     hl.dispatch(hl.dsp.exec_raw(command))
 end)
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("google-chrome-stable"))
+-- Swap tiling window position in a direction (l, r, u, d)
+hl.bind(mainMod .. "+ CTRL + H", hl.dsp.window.move({ direction = "left" }))
+hl.bind(mainMod .. "+ CTRL + L", hl.dsp.window.move({ direction = "right" }))
+hl.bind(mainMod .. "+ CTRL + K", hl.dsp.window.move({ direction = "up" }))
+hl.bind(mainMod .. "+ CTRL + J", hl.dsp.window.move({ direction = "down" }))
 
 -- Scroll through existing workspaces with mainMod + scroll
 hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
