@@ -31,6 +31,9 @@ hl.bind(mainMod .. "+ CTRL + H", hl.dsp.window.move({ direction = "left" }))
 hl.bind(mainMod .. "+ CTRL + L", hl.dsp.window.move({ direction = "right" }))
 hl.bind(mainMod .. "+ CTRL + K", hl.dsp.window.move({ direction = "up" }))
 hl.bind(mainMod .. "+ CTRL + J", hl.dsp.window.move({ direction = "down" }))
+-- Cycle tiling window position in a direction (l, r, u, d)
+hl.bind(mainMod .. "+ SHIFT + H", hl.dsp.window.cycle_next())
+hl.bind(mainMod .. "+ SHIFT + L", hl.dsp.window.cycle_next({ next = false }))
 
 -- Scroll through existing workspaces with mainMod + scroll
 hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
