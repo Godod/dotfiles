@@ -1,66 +1,17 @@
 if type -q hyprpaper
-    function wallpaper
-        # Function to visually select and apply a wallpaper using Yazi,
-        # and select a Rofi theme using fzf.
-        # It saves WALLPAPER_PATH and ROFI_THEME to the systemd environment.
+    function _print_error -d "Print error message in red"
+        echo -e "\e[38;2;239;69;56m  ✗  $argv\e[0m"
+    end
 
-        set -l DIR "$HOME/Pictures/Wallpapers"
-        set -l ROFI_DIR "$HOME/.config/rofi/themes"
+    function _print_step -d "Print process step in blue"
+        echo -e "  \e[38;2;0;210;210m󰔟  $argv\e[0m"
+    end
 
-        # Check if the wallpaper directory has files
-        if test (count $DIR/*) -eq 0
-            echo -e "\e[38;2;239;69;56m  ✗  Folder is empty or does not exist: $DIR\e[0m"
-            return
-        end
+    function _print_success -d "Print success message in blue"
+        echo -e "  \e[38;2;0;210;210m✓  $argv\e[0m"
+    end
 
-        # Create a temporary file to store the selected file path from Yazi
-        set -l tmpfile (mktemp)
-
-        # Launch Yazi in chooser mode directly in the wallpapers directory
-        yazi "$DIR" --chooser-file="$tmpfile"
-
-        # Read the selected file path
-        set -l FULL_PATH (cat "$tmpfile")
-
-        # Clean up the temporary file
-        rm -f "$tmpfile"
-
-        # Stop execution if the user cancels Yazi selection (e.g., presses 'q' or 'Esc')
-        if test -z "$FULL_PATH"
-            clear
-            echo -e "  \e[38;2;239;69;56m✗  Wallpaper selection cancelled\e[0m"
-            echo ""
-            return
-        end
-
-        # Save the wallpaper path to the systemd environment
-        systemctl --user set-environment WALLPAPER_PATH="$FULL_PATH"
-        set -l SELECTED_WALL (basename "$FULL_PATH")
-
-        # Check if Rofi themes directory exists
-        if not test -d "$ROFI_DIR"
-            echo -e "  \e[38;2;239;69;56m✗  Rofi themes folder does not exist: $ROFI_DIR\e[0m"
-            return
-        end
-
-        # Use fzf to select a Rofi theme
-        set -l SELECTED_THEME (command ls "$ROFI_DIR" | fzf \
-        --prompt="❯ Choose Rofi Theme: " \
-        --layout=reverse \
-        --border=rounded)
-
-        # Stop execution if the user cancels fzf selection
-        if test -z "$SELECTED_THEME"
-            clear
-            echo -e "  \e[38;2;239;69;56m✗  Rofi theme selection cancelled\e[0m"
-            echo ""
-            return
-        end
-
-        # Save the Rofi theme path to the systemd environment
-        systemctl --user set-environment ROFI_THEME="$ROFI_DIR/$SELECTED_THEME"
-
-        # Clear screen and show the banner only after all selections are made
+    function _print_banner -d "Print the ASCII banner"
         clear
         echo ""
         echo -e "\e[38;2;239;69;56m  ██╗    ██╗  █████╗  ██╗      ██╗     \e[0m"
@@ -74,22 +25,99 @@ if type -q hyprpaper
         echo -e "\e[38;2;0;210;210m          Hyprpaper Selector\e[0m"
         echo -e "\e[38;2;155;52;200m  ──────────────────────────────────\e[0m"
         echo ""
+    end
 
-        echo -e "  \e[38;2;0;210;210m󰔟  Replacing Wallpaper...\e[0m"
+    function _validate_directories -d "Check if required directories exist and have files"
+        set -l wall_dir $argv[1]
+        set -l rofi_dir $argv[2]
 
-        # Reload hyprpaper with the new image
+        if test (count "$wall_dir"/*) -eq 0
+            _print_error "Folder is empty or does not exist: $wall_dir"
+            return 1
+        end
+
+        if not test -d "$rofi_dir"
+            _print_error "Rofi themes folder does not exist: $rofi_dir"
+            return 1
+        end
+
+        return 0
+    end
+
+    function _select_wallpaper -d "Use Yazi to select a wallpaper"
+        set -l dir $argv[1]
+        set -l tmpfile (mktemp)
+
+        yazi "$dir" --chooser-file="$tmpfile"
+        cat "$tmpfile"
+        rm -f "$tmpfile"
+    end
+
+    function _select_rofi_theme -d "Use fzf to select a Rofi theme"
+        set -l dir $argv[1]
+        command ls "$dir" | fzf --prompt="❯ Choose Rofi Theme: " --layout=reverse --border=rounded
+    end
+
+    function _save_environment -d "Save paths to systemd environment"
+        set -l wall_path $argv[1]
+        set -l rofi_theme $argv[2]
+
+        systemctl --user set-environment WALLPAPER_PATH="$wall_path"
+        systemctl --user set-environment ROFI_THEME="$rofi_theme"
+    end
+
+    function _apply_wallpaper -d "Apply wallpaper using hyprpaper"
+        set -l full_path $argv[1]
+
+        _print_step "Replacing Wallpaper..."
         hyprctl hyprpaper unload all >/dev/null 2>&1
-        hyprctl hyprpaper preload "$FULL_PATH" >/dev/null 2>&1
+        hyprctl hyprpaper preload "$full_path" >/dev/null 2>&1
         sleep 0.1
-        hyprctl hyprpaper wallpaper ",$FULL_PATH" >/dev/null 2>&1
+        hyprctl hyprpaper wallpaper ",$full_path" >/dev/null 2>&1
+    end
 
-        echo -e "  \e[38;2;0;210;210m󰔟  Generating Colors...\e[0m"
+    function _generate_colors -d "Generate system colors using matugen"
+        set -l full_path $argv[1]
 
-        # Generate system colors using matugen
-        matugen image "$FULL_PATH" --source-color-index 0 >/dev/null 2>&1
+        _print_step "Generating Colors..."
+        matugen image "$full_path" --source-color-index 0 >/dev/null 2>&1
+    end
 
-        echo -e "  \e[38;2;0;210;210m✓  Wallpaper: $SELECTED_WALL\e[0m"
-        echo -e "  \e[38;2;0;210;210m✓  Rofi Theme: $SELECTED_THEME\e[0m"
+    function wallpaper -d "Main function to set wallpaper and Rofi theme"
+        set -l wall_dir "$HOME/Pictures/Wallpapers"
+        set -l rofi_dir "$HOME/.config/rofi/themes"
+
+        # 1. Validation
+        if not _validate_directories "$wall_dir" "$rofi_dir"
+            return 1
+        end
+
+        # 2. Get user choices
+        set -l full_path (_select_wallpaper "$wall_dir")
+        if test -z "$full_path"
+            clear
+            _print_error "Wallpaper selection cancelled"
+            return 1
+        end
+
+        set -l selected_theme (_select_rofi_theme "$rofi_dir")
+        if test -z "$selected_theme"
+            clear
+            _print_error "Rofi theme selection cancelled"
+            return 1
+        end
+
+        # 3. Process the changes
+        _print_banner
+
+        _save_environment "$full_path" "$rofi_dir/$selected_theme"
+        _apply_wallpaper "$full_path"
+        _generate_colors "$full_path"
+
+        # 4. Show results
+        set -l selected_wall (basename "$full_path")
+        _print_success "Wallpaper: $selected_wall"
+        _print_success "Rofi Theme: $selected_theme"
         echo ""
     end
 end
