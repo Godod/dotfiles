@@ -38,7 +38,7 @@ deduplicate-links = false
 git-ignore = false
 
 [editor.whitespace.render]
-space = "all"
+space = "none"
 tab = "all"
 nbsp = "none"
 nnbsp = "none"
