@@ -28,3 +28,8 @@ output_path = '~/.config/yazi/theme.toml'
 [templates.hyprland]
 input_path = '~/.config/hypr/colors_template.lua'
 output_path = '~/.config/hypr/colors.lua'
+
+[templates.swaync]
+input_path = "~/.config/swaync/style-template.css"
+output_path = "~/.config/swaync/colors.css"
+post_hook = "swaync-client -rs"

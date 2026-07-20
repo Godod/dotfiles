@@ -1,81 +1,98 @@
 {
-  "layer": "overlay",
-  "control-center-layer": "top",
-  "keyboard-shortcuts": true,
-  "transition-time": 200,
-  "hide-on-clear": false,
-  "hide-on-action": true,
-  "time-format": "%H:%M",
+  "$schema": "/etc/xdg/swaync/configSchema.json",
   "positionX": "right",
   "positionY": "top",
-  "fit-to-screen": true,
-  "control-center-width": 360,
-  "control-center-height": 0,
-  "control-center-margin-top": 8,
-  "control-center-margin-bottom": 8,
-  "control-center-margin-right": 8,
+	"cssPriority": "user",
+
+  "control-center-width": 380,
+  "control-center-height": 860, 
+  "control-center-margin-top": 2,
+  "control-center-margin-bottom": 2,
+  "control-center-margin-right": 1,
   "control-center-margin-left": 0,
-  "notification-window-width": 380,
-  "notification-icon": true,
+
+  "notification-window-width": 400,
   "notification-icon-size": 48,
-  "app-icon-size": 20,
-  "notification-close-button-position": "right",
-  "notification-visibility": {},
-  "timeout": 10,
-  "timeout-low": 5,
-  "timeout-critical": 0,
+  "notification-body-image-height": 160,
+  "notification-body-image-width": 200,
+
+  "timeout": 4,
+  "timeout-low": 2,
+  "timeout-critical": 6,
+  
+  "fit-to-screen": false,
+  "keyboard-shortcuts": true,
+  "image-visibility": "when-available",
+  "transition-time": 200,
+  "hide-on-clear": false,
+  "hide-on-action": false,
+  "script-fail-notify": true,
+  "scripts": {
+    "example-script": {
+      "exec": "echo 'Do something...'",
+      "urgency": "Normal"
+    }
+  },
+  "notification-visibility": {
+    "example-name": {
+      "state": "muted",
+      "urgency": "Low",
+      "app-name": "Spotify"
+    }
+  },
   "widgets": [
+    "label",
+    "buttons-grid",
+    "mpris",
     "title",
     "dnd",
-    "buttons-grid",
-    "volume",
-    "backlight",
-    "mpris",
     "notifications"
   ],
   "widget-config": {
     "title": {
-      "text": "Notification Center",
+      "text": "Notifications",
       "clear-all-button": true,
-      "button-text": "Clear All"
+      "button-text": " 󰎟 "
     },
     "dnd": {
-      "text": "Do Not Disturb"
+      "text": "Do not disturb"
+    },
+    "label": {
+      "max-lines": 1,
+      "text": " "
+    },
+    "mpris": {
+      "image-size": 96,
+      "image-radius": 12
+    },
+    "volume": {
+      "label": "󰕾",
+        "show-per-app": true
     },
     "buttons-grid": {
       "actions": [
         {
-          "label": "",
-          "command": "swaync-client -cp; sleep 0.3; hyprctl dispatch exec 'path/to/your/screenshot.sh'"
+          "label": " ",
+          "command": "amixer set Master toggle"
         },
         {
-          "label": "󰹑",
-          "command": "swaync-client -cp; sleep 0.3; hyprctl dispatch exec 'path/to/your/record.sh'"
+          "label": "",
+          "command": "amixer set Capture toggle"
         },
         {
-          "label": "",
-          "command": "swaync-client -cp; sleep 0.3; hyprctl dispatch exec 'hyprpicker -a'"
+          "label": " ",
+          "command": "nm-connection-editor"
         },
         {
-          "label": "󰪚",
-          "command": "swaync-client -cp; galculator"
+          "label": "󰂯",
+          "command": "blueman-manager"
+        },
+        {
+          "label": "󰏘",
+          "command": "nwg-look"
         }
+        
       ]
-    },
-    "mpris": {
-      "image-size": 56,
-      "blur-image": false
-    },
-    "volume": {
-      "label": "󰕾 ",
-      "show-per-app": false
-    },
-    "backlight": {
-      "label": "󰃠 ",
-      "device": "intel_backlight"
-    },
-    "notifications": {
-      "notification-visibility": {}
     }
   }
 }
