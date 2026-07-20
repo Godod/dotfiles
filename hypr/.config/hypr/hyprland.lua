@@ -12,5 +12,6 @@ require("hypr.input")
 require("hypr.bindings")
 require("hypr.rules")
 require("hypr.looknfeel")
+require("hypr.colors")
 require("hypr.autostart")
 

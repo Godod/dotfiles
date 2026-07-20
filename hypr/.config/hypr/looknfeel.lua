@@ -47,6 +47,20 @@ hl.config({
 --   },
 -- })
 
+-- Borders
+hl.config({
+  general = {
+    border_size = 2,                                          -- Border thickness in pixels
+    -- ["col.active_border"] = "rgba(33ccffee)",                 -- Solid color or gradient for active window
+    -- ["col.inactive_border"] = "rgba(595959aa)",               -- Color for inactive windows
+    resize_on_border = true,                                  -- Allows dragging borders to resize windows
+  },
+
+  decoration = {
+    rounding = 10,                               -- Rounds corners of windows and borders
+  }
+})
+
 -- Animations
 hl.curve("default", { type = "bezier", points = { { 0.12, 0.92 }, { 0.08, 1.0 } } })
 hl.curve("wind", { type = "bezier", points = { { 0.12, 0.92 }, { 0.08, 1.0 } } })
@@ -74,6 +88,3 @@ hl.animation({
 })
 hl.animation({ leaf = "border", enabled = true, speed = 1, bezier = "linear" })
 hl.animation({ leaf = "borderangle", enabled = true, speed = 24, bezier = "linear", style = "loop" })
-
-
-

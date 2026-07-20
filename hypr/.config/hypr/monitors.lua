@@ -17,7 +17,7 @@ local monitor_scale = "auto"
 -- local monitor_scale = 1
 
 hl.env("GDK_SCALE", tostring(gdk_scale))
-hl.monitor({ output = "", mode = "preferred", position = "auto", scale = monitor_scale })
+hl.monitor({ output = "", mode = "preferred", position = "auto", scale = monitor_scale, bitdepth = 10 })
 
 -- Portrait/rotated secondary monitor (transform: 1 = 90°, 3 = 270°)
 -- hl.monitor({ output = "DP-2", mode = "preferred", position = "auto", scale = 1, transform = 1 })
