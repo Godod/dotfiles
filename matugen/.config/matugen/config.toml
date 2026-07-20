@@ -29,7 +29,7 @@ output_path = '~/.config/yazi/theme.toml'
 input_path = '~/.config/hypr/colors_template.lua'
 output_path = '~/.config/hypr/colors.lua'
 
-[templates.swaync]
-input_path = "~/.config/swaync/style-template.css"
-output_path = "~/.config/swaync/colors.css"
-post_hook = "swaync-client -rs"
+[templates.dunst]
+input_path = '~/.config/dunst/config_template.toml'
+output_path = '~/.config/dunst/dunstrc'
+post_hook = 'dunstctl reload'
