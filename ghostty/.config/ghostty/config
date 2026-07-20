@@ -1,7 +1,9 @@
 # Fonts
-font-family = ""  # Remove default font
+# font-family = ""  # Remove default font
 font-family = "Google Sans Code"
 font-family = "0xProto Nerd Font Propo"
+font-family = "JetBrains Nerd Font"
+font-style = "semibold"
 font-size = 12
 
 # Theme
