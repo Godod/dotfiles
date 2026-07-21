@@ -53,7 +53,7 @@ font-size = 12
 
 ### 2. Window & Background
 ```ini
-background-opacity = 0.95
+background-opacity = 0.85
 window-theme = ghostty
 ```
 - Restricts borders and decorations to a clean, frame-aligned theme, with subtle background transparency.
