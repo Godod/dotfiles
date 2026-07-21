@@ -1,46 +1,118 @@
-# Neovim Configuration
+# Neovim Lua Configuration
 
-A robust Neovim configuration built with Lua, featuring custom keymaps and package management via `lazy.nvim`.
+A robust, highly optimized, and modular Neovim configuration written entirely in **Lua**. It leverages **lazy.nvim** for plugin management, **blink.cmp** for autocompletion, and implements custom keymaps (inspired by The Primeagen) for rapid editing.
 
-## Plugin Ecosystem
+## Overview
 
-Plugins are structured inside `lua/godod1/lazy/`:
+This Neovim configuration is designed for speed and productivity. It splits configurations into core settings, keymaps, and individual plugin specification modules under `lua/godod1/lazy/`.
 
-- **Completion**: `blink.cmp` provides completions.
-- **Environment**: `cloak` hides secrets and environment variables.
-- **Formatting**: `conform.nvim` manages auto-formatting.
-- **Debugging**: `nvim-dap` controls debugger sessions.
-- **LSP**: `nvim-lspconfig` sets up language server attachments.
-- **Docstrings**: `neogen` generates code comments.
-- **Testing**: `neotest` runs unit tests directly from buffers.
-- **fuzzy finder**: `telescope` manages quick searches and files.
-- **Syntax**: `nvim-treesitter` handles syntax trees and parsing.
-- **Git & History**: `undotree` provides a visual tree of edits.
-- **Writing**: `zen-mode` provides distraction-free editing.
+### Key Features
+
+- **Modern Plugin Loader**: Managed via `lazy.nvim` with transaction locks (`lazy-lock.json`).
+- **Unified Completion Suite**: Leverages the blazing-fast `blink.cmp` for context-aware coding suggestions.
+- **Centering Movements**: Movement keys automatically keep your cursor centered during page jumps and search queries.
+- **System Clipboard Operations**: Seamless clipboard sharing with the host OS system registers using explicit leader binds.
+- **Interactive Fuzzy Finding**: Employs `telescope` to navigate files, git states, and occurrences.
+- **Distraction-Free Workspace**: Zen-mode support and automated secret/env masking via `cloak`.
+
+---
+
+## Tech Stack & Dependencies
+
+- **Text Editor**: `neovim` (v0.9.0+)
+- **Plugin Manager**: `lazy.nvim`
+- **Autocompleter**: `blink.cmp`
+- **Syntax Engine**: `nvim-treesitter`
+- **Visual Utilities**: `telescope` (fuzzy finder), `undotree` (edit trees), `zen-mode`
+- **Clipboards**: Requires `wl-clipboard` (Wayland) or `xclip` / `xsel` (X11) for system clipboard integration.
+
+---
+
+## Directory Structure
+
+```
+nvim/
+└── .config/
+    └── nvim/
+        ├── init.lua            # Main entry point (loads lua/godod1/init.lua)
+        ├── lazy-lock.json      # Locked versions of all loaded plugins
+        ├── lua/
+        │   └── godod1/
+        │       ├── init.lua            # Entry point for user configurations
+        │       ├── lazy_init.lua       # Configures and runs lazy.nvim
+        │       ├── remap.lua           # Global keybinds and navigation overrides
+        │       ├── set.lua             # System level defaults (margins, line numbers)
+        │       └── lazy/               # Dedicated modular files for plugins
+        │           ├── blink.lua       # Autocompletion
+        │           ├── cloak.lua       # Secret files concealment
+        │           ├── conform.lua     # Formatting engine (auto-format on save)
+        │           ├── lsp.lua         # LSP setups and servers list
+        │           ├── telescope.lua   # Search buffers and files
+        │           └── treesitter.lua  # Syntax highlighting parsers
+        └── README.md           # Documentation
+```
+
+---
 
 ## Custom Keymaps
 
-### Normal Mode Navigation & Actions
+The leader key is configured as `Space`.
 
-- **`<leader>pv`**: Open directory explorer.
-- **`<C-h>` / `<C-j>` / `<C-k>` / `<C-l>`**: Navigate splits.
-- **`<C-d>` / `<C-u>`**: Move half-page keeping cursor centered.
-- **`n` / `N`**: Jump search occurrences keeping cursor centered.
-- **`<Esc>`**: Clear search highlight.
-- **`<leader>cq`**: Open diagnostic location lists.
-- **`<leader>cds`**: Call `neogen` docstring generator.
+### Movement & Editing Shortcuts
 
-### Clipboard & Registers
+| Keybinding | Mode | Action | Target / Function |
+|---|---|---|---|
+| `<leader>pv` | Normal | File Explorer | Opens default Netrw/directory view |
+| `J` | Visual | Block Move Down | Bubble selected block down keeping indentation |
+| `K` | Visual | Block Move Up | Bubble selected block up keeping indentation |
+| `J` | Normal | Join lines | Join lines while keeping cursor position static |
+| `<C-d>` | Normal | Half page down | Scroll down and center cursor (`zz`) |
+| `<C-u>` | Normal | Half page up | Scroll up and center cursor (`zz`) |
+| `n` | Normal | Next match | Go to next search match and center cursor |
+| `N` | Normal | Previous match | Go to previous match and center cursor |
+| `<Esc>` | Normal | Clear search | Clear active search highlights |
 
-- **`<leader>y`** (Normal/Visual): Copy selection to the system clipboard.
-- **`<leader>Y`**: Copy line to system clipboard.
-- **`<leader>p`** (Visual): Paste over selection without replacing your clipboard register.
-- **`<leader>dv`** (Normal/Visual): Delete selection to the void register.
+### Clipboard & Void Register Operations
 
-### Visual Mode Movements
+| Keybinding | Mode | Action | Description |
+|---|---|---|---|
+| `<leader>y` | Normal/Visual | Copy to OS | Copy selection to system clipboard (`+` register) |
+| `<leader>Y` | Normal | Copy line | Copy current line to system clipboard |
+| `<leader>p` | Visual | Paste replace | Paste clipboard value over selection without losing register |
+| `<leader>dv` | Normal/Visual | Delete to void | Delete selection directly to the void register (`_` register) |
 
-- **`J`**: Move highlighted block down.
-- **`K`**: Move highlighted block up.
+### Navigation & Diagnostics
 
-## Autocmds
-- **TextYankPost**: Triggers a flash highlight on yanked text to indicate successful copy.
+| Keybinding | Mode | Action | Description |
+|---|---|---|---|
+| `<C-h/j/k/l>` | Normal | Window focus | Jump focus left, down, up, or right across splits |
+| `<leader>cq` | Normal | Location List | Open diagnostic [Q]uickfix list |
+| `<leader>cds` | Normal | Docstrings | Call `neogen` to generate code documentation template |
+
+---
+
+## Troubleshooting
+
+### Clipboard copying does not work
+If `<leader>y` does not populate your system clipboard, verify you have a clipboard utility installed:
+```bash
+# Arch Linux (Wayland)
+sudo pacman -S wl-clipboard
+
+# Arch Linux (X11)
+sudo pacman -S xclip
+```
+
+### Treesitter Highlight failures
+If code syntax fails or throws errors:
+```vim
+:TSUpdate
+```
+This forces Treesitter to recompile language parsers.
+
+### Diagnostic LSP errors
+To verify LSP status:
+```vim
+:LspInfo
+```
+This shows running language server clients and attachments to the active buffer.
