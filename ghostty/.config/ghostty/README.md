@@ -9,7 +9,7 @@ This configuration prioritizes typography, window aesthetics, and integration wi
 ### Key Features
 
 - **Premium Typography**: Built around `Google Sans Code` with Nerd Font fallbacks for icon support.
-- **Window Translucency**: Background opacity set to `0.95` for subtle, elegant desktop blending.
+- **Window Translucency**: Background opacity set to `0.85` for subtle, elegant desktop blending.
 - **Mouse Auto-Hide**: Automatically hides the mouse pointer when you start typing.
 - **Dynamic Theming Integration**: Colors are fetched from the wallpaper color scheme and loaded from a custom theme path (`themes/Matugen`).
 
