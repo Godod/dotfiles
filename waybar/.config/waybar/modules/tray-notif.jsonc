@@ -14,7 +14,7 @@
     },
     "return-type": "json",
     "exec-if": "which dunstctl",
-    "exec": "notification.sh",
+    "exec": "~/.config/dunst/notification.sh",
     "on-click": "dunstctl history-pop",
     "on-click-right": "dunstctl set-paused toggle",
     "escape": true

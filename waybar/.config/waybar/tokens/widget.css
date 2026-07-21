@@ -87,6 +87,15 @@
   margin-left: 8px;
 }
 
+#backlight {
+  margin: 5px 5px;
+  padding: 3px 3px;
+  padding-right: 5px;
+  background-color: @surface_container;
+  border-radius: 20px;
+  color: @secondary_fixed_dim;
+}
+
 /*======= TRAY =======*/
 #tray-group {
   margin: 4px 5px;
@@ -103,8 +112,8 @@
   padding: 6px 10px;
 }
 
-#tray>.passive,
-#tray>.active,
-#tray>.needs-attention {
+#tray > .passive,
+#tray > .active,
+#tray > .needs-attention {
   -gtk-icon-effect: none;
 }

@@ -3,7 +3,7 @@
     "format": "{icon} {windows}",
     "on-click": "activate",
     "persistent-workspaces": {
-      "*": 5
+      "*": 3
     },
     "window-rewrite-default": "󰊠",
     "window-rewrite": {
@@ -35,6 +35,7 @@
       // --- System ---
       "blueman-manager": "",
       "pavucontrol": "󱕂",
+      "backlight": "",
       "nm-connection-editor": "󰐻",
       // --- Tool ---
       "nwg-look": "󰒓",
