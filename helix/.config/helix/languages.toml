@@ -55,3 +55,19 @@ name = "binary"
 request = "launch"
 completion = [ { name = "binary", completion = "filename" } ]
 args = { program = "{0}", initCommands = [ "command script import /usr/local/etc/rust_lldb_rustc_primer.py" ] }
+
+# Define the VSCode JSON language server binary
+[language-server.vscode-json-language-server]
+command = "vscode-json-language-server"
+args = ["--stdio"]
+
+# Configure the LSP to enable validation and formatting
+[language-server.vscode-json-language-server.config]
+provideFormatter = true
+json = { validate = { enable = true }, format = { enable = true } }
+
+# Map the language server to JSONC files
+[[language]]
+name = "jsonc"
+language-servers = ["vscode-json-language-server"]
+auto-format = true
