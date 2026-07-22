@@ -82,9 +82,12 @@ graph TD
 
 ---
 
-## Installation & Deployment
+## How to Install
+
+This section outlines the setup process, focusing on detailed instructions to install all necessary dependencies on Arch Linux.
 
 ### 1. Clone the Repository
+
 Clone this dotfiles repository into your home directory:
 
 ```bash
@@ -92,27 +95,122 @@ git clone https://github.com/Godod/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
 ```
 
-### 2. Run Provisioning Script
-Provision your machine with required system tools:
-- **Arch Linux**: Run [arch.sh](file:///home/godod/.dotfiles/installation/arch.sh)
-  ```bash
-  ./installation/arch.sh
-  ```
-- **macOS**: Run [macos.sh](file:///home/godod/.dotfiles/installation/macos.sh)
-  ```bash
-  ./installation/macos.sh
-  ```
+### 2. Install Dependencies (Arch Linux)
 
-### 3. Stow Symlinks
-Generate symbolic links from the dotfiles directory into your system's `~/.config` folder using the `./apply` helper script:
+You can provision all dependencies automatically using the included script or install them step-by-step manually.
+
+#### Option A: Automated Installation (Recommended)
+
+Simply execute the automated installer script [arch.sh](file:///home/godod/.dotfiles/installation/arch.sh). This script automatically installs all core and AUR package dependencies using `yay`, registers `fish` as your user shell, installs the shell plugins, and stows the configurations:
+
+```bash
+chmod +x ./installation/arch.sh
+./installation/arch.sh
+```
+
+#### Option B: Manual Installation & Dependency Breakdown
+
+If you prefer to configure your environment step-by-step, follow the manual instructions below:
+
+##### A. Bootstrap an AUR Helper (`yay`)
+Several essential components (such as `tpack-bin`, `dblab-bin`, `nls-bin`, and `sabiql`) reside in the Arch User Repository (AUR). If you do not have an AUR helper configured, install `yay`:
+
+```bash
+# Install development prerequisites
+sudo pacman -S --needed git base-devel
+
+# Clone, build and install yay
+git clone https://aur.archlinux.org/yay.git /tmp/yay
+cd /tmp/yay
+makepkg -si
+
+# Clean up
+cd -
+rm -rf /tmp/yay
+```
+
+##### B. Install Package Stack
+Run the following command to download and build all system tools, editors, environments, and custom package dependencies:
+
+```bash
+yay -S git base-devel fish fisher fzf fd bat tmux neovim deno lazygit eza helix stow zoxide yazi bash tpack-bin fastfetch dblab-bin marksman lazydocker nls-bin sabiql
+```
+
+Here is a detailed breakdown of what each dependency is used for:
+
+| Package | Source | Purpose / Integration |
+| :--- | :---: | :--- |
+| `git` | Official Repos | Core version control to sync dotfiles and track modifications. |
+| `base-devel` | Official Repos | Basic compilation tools (`gcc`, `make`, etc.) required to build AUR helper modules. |
+| `fish` | Official Repos | The primary interactive command shell featuring custom abbreviations and environment helpers. |
+| `fisher` | Official Repos/AUR | Fish shell plugin manager. |
+| `fzf` | Official Repos | Fuzzy finder utility integrated into shell navigations and selection menus. |
+| `fd` | Official Repos | Rapid find replacement used for visual file indexing and menu completions. |
+| `bat` | Official Repos | Syntax-highlighting reader for terminal configurations and file previewing. |
+| `tmux` | Official Repos | Terminal multiplexer used to manage persistent workflow sessions. |
+| `neovim` | Official Repos | Extensible text editor integrated with custom plugins. |
+| `deno` | Official Repos | Secure runtime for JavaScript and TypeScript required by Markdown/YAML helper tooling. |
+| `lazygit` | Official Repos | Terminal UI dashboard for quick Git staging, commits, and branch switching. |
+| `eza` | Official Repos | Modern file listing engine used as a custom directory structure output helper. |
+| `helix` | Official Repos | Post-modern modal text editor used as the main console code editing tool. |
+| `stow` | Official Repos | GNU Stow to link folder configurations into `~/.config`. |
+| `zoxide` | Official Repos | Smarter directory database tracking frequent directories (`cd` utility). |
+| `yazi` | Official Repos | Terminal file manager with responsive preview grids and custom image render hooks. |
+| `bash` | Official Repos | GNU Bourne Again SHell required for running terminal wallpaper pipelines. |
+| `tpack-bin` | AUR | Binary version of Tmux Package Manager (TPM) used for session plugins. |
+| `fastfetch` | Official Repos | Fast system diagnostics visualizer. |
+| `dblab-bin` | AUR | Interactive database terminal client supporting multiple SQL drivers. |
+| `marksman` | Official Repos | Markdown Language Server Protocol (LSP) provider. |
+| `lazydocker` | Official Repos | Keyboard-driven terminal dashboard for Docker container tracking. |
+| `nls-bin` | AUR | Modern directory lister utility used as the primary `ls`/`ll` alias command. |
+| `sabiql` | AUR | Keyboard-driven SQL query executor. |
+
+##### C. Register Fish and Change User Shell
+Register the newly installed `fish` environment and set it as your default login shell:
+
+```bash
+# Add fish to shells listing
+echo "/bin/fish" | sudo tee -a /etc/shells
+
+# Update your user shell
+chsh -s /bin/fish
+```
+> [!NOTE]
+> Re-login or reload your terminal session for the default shell swap to take effect.
+
+##### D. Install Fish Plugins
+Bootstrap the fish terminal experience by running the plugins installer script [plugins.fish](file:///home/godod/.dotfiles/installation/plugins.fish):
+
+```bash
+fish ./installation/plugins.fish
+```
+This installs Tide prompt v6, FZF integrations, and bracket auto-pairing hooks.
+
+##### E. Apply Configurations using Stow
+Generate system symbolic links for all configurations (Helix, Neovim, Tmux, Fish, Ghostty, etc.) using [apply](file:///home/godod/.dotfiles/apply):
 
 ```bash
 ./apply
 ```
 
+---
+
+### 3. macOS Setup (Alternative)
+
+For macOS environments, use [macos.sh](file:///home/godod/.dotfiles/installation/macos.sh) to provision packages via `Homebrew`:
+
+```bash
+chmod +x ./installation/macos.sh
+./installation/macos.sh
+```
+
 ### 4. Post-Installation Steps
-- **Fish Prompt**: Run `tide configure` inside your terminal to choose styling layout options.
-- **Tmux Plugins**: Launch `tmux` and press `Ctrl + b` followed by `I` (capital I) to install tmux plugins via `tpack`.
+
+- **Fish Prompt Setup**: Open a new shell instance and configure the Tide layout:
+  ```fish
+  tide configure
+  ```
+- **Tmux Plugins Setup**: Launch `tmux`, then install tmux packages via `tpack` by pressing `Ctrl + b` followed by `I` (capital I).
 
 ---
 
